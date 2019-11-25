@@ -36,10 +36,10 @@ var rootCmd = &cobra.Command{
 OctoSQL does that by creating an internal representation of your query and later translating parts of it into the query languages or APIs of the source databases. Whenever a datasource doesn't support a given operation, OctoSQL will execute it in memory, so you don't have to worry about the specifics of the underlying datasources.
 
 With OctoSQL you don't need O(n) client tools or a large data analysis system deployment. Everything's contained in a single binary.`,
-	Args: cobra.ExactValidArgs(1),
+	Args: cobra.ExactValidArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		ctx := context.Background()
-		query := args[0]
+		query := /*args[0]*/"select o.a,p.b from o as o join p as p on o.a=p.a"
 
 		// Configuration
 		cfg, err := config.ReadConfig(configPath)
